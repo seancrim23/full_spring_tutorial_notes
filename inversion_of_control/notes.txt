@@ -1,0 +1,45 @@
+*****************************************************************************
+spring tutorial - inversion of control
+*****************************************************************************
+
+what is it????
+	- outsourcing the construction and management of objects
+	
+- using an object factory to dynamically create different objects based on a configuration/annotation
+	
+- Spring Container
+	- Primary functions:
+		- create and manage objects (inversion of control)
+		- inject object's dependencies (dependency injection)
+		
+	- 3 ways to configure:
+		- XML config file (legacy, but most legacy apps still use)
+		- Java annotations (modern)
+		- java source code (modern)
+		
+- Spring development Process
+ 
+	1. configure spring beans
+		- xml example
+			- <beans ...>
+				<bean id="myCoach"
+					class="path.to.desired.coach.class">
+				</bean>
+			</beans>
+	2. create spring container
+		- spring container is generically known as ApplicationContext
+			- specialized implementations:
+				- classpathxmlapplicationcontext (classpathxmlapplicationcontext context = new classpathxmlapplicationcontext("applicationContext.xml");)
+				- annotationconfigapplicationcontext
+				- genericwebapplicationcontext
+				- etc
+	3. retrieve beans from spring container
+		- ex. Coach theCoach = context.getBean("myCoach", Coach.class); //make sure first argument matches with the desired bean id!!!! second argument is the interface being implemented
+		
+- WHAT IS A SPRING BEAN???
+
+	- simply a java object
+	- java objects created by the spring container
+	- created from normal java classes
+		
+		

@@ -1,0 +1,48 @@
+***********************************************************
+spring tutorial - spring overview
+************************************************************************
+
+why ???????
+
+	- SIMPLIFY JAVA ENTERPRISE DEVELOPMENT
+	- replacement for Java EE (also should look into Java EE)
+		- essentially Java EE was bad for a while, Spring essentially took Java EE's place (popularity wise)
+	
+- new in Spring 5
+
+	- Java 8 or higher min requirements
+	- upgraded spring MVC to use new versions of ServletAPI 4.0
+	
+	- check out spring 5 release notes (www.luv2code.com/spring-5-whats-new)
+	- spring 5 FAQ (www.luv2code.com/spring-5-faq)
+	
+- Goals of Spring
+	- lightweight dev with POJOs
+	- promote loose coupling w dependency injection
+	- declarative programming w AOP (aspect oriented programming)
+	- minimize boilerplate Java code
+	
+- spring core container
+	- Beans, Core, SpEL, Context 
+		- factory for creating beans
+		- manage bean dependencies
+		
+- spring infrastructure
+	- AOP, Aspects, Instrumentation, Messaging
+		- aspect oriented programming
+		- add functionality to objects declaratively
+		- logging, security, transactions, etc
+		
+- spring data access layer
+	- JDBC, ORM, Transactions, OXM, JMS
+		- reduces source code, lots of good helper classes
+		- ORM integrates with Hibernate and/or JPA
+		
+- spring web layer
+	- Servlet, WebSocket, Web, Portlet
+		- home of spring MVC framework
+		
+- spring test layer
+	- Unit, Integration, Mock
+		- TDD
+	
