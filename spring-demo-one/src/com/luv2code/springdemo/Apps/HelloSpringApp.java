@@ -1,6 +1,8 @@
-package com.luv2code.springdemo;
+package com.luv2code.springdemo.Apps;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.luv2code.springdemo.interfaces.Coach;
 
 public class HelloSpringApp {
 
@@ -11,11 +13,11 @@ public class HelloSpringApp {
 				new ClassPathXmlApplicationContext("applicationContext.xml");
 		//retrieve bean from spring container
 		Coach theCoach = context.getBean("myCoach", Coach.class);
-		Coach newCoach = context.getBean("newCoach", Coach.class);
 		
 		// call methods on the bean
-		System.out.println("Old " + theCoach.getDailyWorkout());
-		System.out.println("New " + newCoach.getDailyWorkout());
+		System.out.println(theCoach.getDailyWorkout());
+		//call method that was provided by the helper
+		System.out.println(theCoach.getDailyFortune());
 		
 		// close the context
 		context.close();

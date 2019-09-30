@@ -1,0 +1,24 @@
+******************************************************************************
+spring - spring config w java annotations
+****************************************************************************************
+
+what are java annotations?
+	- labels/markers added to java class
+	- provide meta-data about class
+	- processed at compile time or run-time for special processing
+	
+- adding annotations step by step
+	- enable component scanning in Spring config file
+		- <context:component-scan base-package="com.luv2code.springdemo" />
+	- add @component annotation to Java classes
+		- @Component("thatOneCoach") //bean ID
+			public class TennisCoach implements Coach {...}
+	- retrieve bean from spring container
+		- same bean retrieval as before
+			- Coach theCoach = context.getBean("thatOneCoach", Coach.class);
+			
+- Default bean IDs
+	- the class name, make first letter lowercase
+		- ex: classname: TennisCoach -> default bean id: tennisCoach
+			@Component
+			public class TennisCoach implements Coach {} //the default bean ID will be "tennisCoach"

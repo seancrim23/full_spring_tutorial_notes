@@ -1,0 +1,44 @@
+********************************************************************
+spring - spring beans scopes and lifecycle
+***************************************************************************
+
+- bean scopes
+	- refers to lifecycle of bean
+	- how long does it live?
+	- how many instances are created?
+	- how is it shared?
+	
+- default bean scope: SINGLETON
+	- one instance of bean
+	- all requests for the bean returns a shared reference for that bean
+	
+- PROTOTYPE scope
+	- NEW object is created for each request
+		- ex: <bean id="myCoach"
+				class="com.luv2code.springdemo.TrackCoach"
+				scope="prototype">
+				...
+			  </bean>
+			  
+- other scopes exist mainly for web programming
+
+- Bean lifecycle methods / hooks
+	- can add custom code during bean initialization
+		- call custom business logic methods
+		- set up handles to resources (db, sockets, files, etc)
+	- can add custom code during bean destruction
+		- calling custom business logic methods
+		- clean up handles to resources (db, sockets, files etc)
+		
+	- easy as defining properties in the bean
+		- ex: <bean id="myCoach"
+				class="com.luv2code.springdemo.TrackCoach"
+				init-method="doMyStartupStuff"
+				destroy-method="doMyCleanupStuff" > // startup and cleanup can be any method
+			...
+			</bean>
+		 
+		- simply define methods for init and destroy
+		- configure the method names in spring config file
+		
+	- MOSTLY FOR SETTING UP AND TEARING DOWN, THE METHODS WILL BASICALLY ALWAYS BE VOID

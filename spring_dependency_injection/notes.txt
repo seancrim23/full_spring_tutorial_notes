@@ -1,0 +1,81 @@
+*********************************************************************
+spring tutorial - spring dependency injection
+**********************************************************************
+
+- dependency inversion principle
+	- client delegates calls to another another object the responsibility of providing its dependencies
+	
+	- outsource the creation of your object to another entity
+		- ex. if i want a car object, i would make a call to the car factory that will then put together the car materials and then return a car to me
+		
+		- spring ex. my spring app wants an object, we reach out to the object factory to build and return the object that we want
+		
+- Example Dependency Interface
+	- public interface FortuneService() {
+		public String getFortune();
+	}
+	
+- Example Dependency Class (implements the dependency interface)
+	- public class HappyFortuneService implements FortuneService {
+		public String getFortune(){
+			return "today is your lucky day!!!";
+		}
+	}
+	
+- Example constructor in parent class for injections
+	- public class BaseballCoach implements Coach {
+		private FortuneService fortuneService;
+		
+		public BaseballCoach(FortuneService theFortuneService){
+			fortuneService = theFortuneService;
+		}
+	}
+	
+- Example app context
+	- define a bean for the service, define a bean for the class you want to inject the service into
+	
+		- <bean id="myFortuneService"
+			class="com.luv2code.springdemo.HappyFortuneService">
+		  </bean>
+		  
+		  <bean id="myCoach"
+			class="com.luv2code.springdemo.BaseballCoach">
+			<constructor-arg ref="myFortuneService" />
+		  </bean>
+		  
+- SETTER INJECTION
+	- inject dependencies by calling setter methods on your class
+		- create setter method(s) in your class for injections
+		- configure the dependency injection in spring config file
+			- create setter method in class for injections
+				public void setFortuneService(FortuneService fortuneService){
+					this.fortuneService = fortuneService;
+				}
+			- basically do a similar one to the constructor injection, except define a "property" element rather than a "constructor-arg" element
+				- <bean id="myCricketCoach"
+					class="com.luv2code.springdemo.CricketCoach">
+				  <property name="fortuneService" ref="myFortuneService" /> //THE REF IS THE NAME OF THE BEAN YOU DEFINE FOR YOUR SERVICE, NAME SHOULD BE WHATEVER YOUR SETTER IS CALLED MINUS THE "set"
+				 </bean>
+
+- INJECTION OF LITERAL VALUES
+	- create setter methods in class
+	- configure injection in spring config file
+	
+		- ex 
+			private String emailAddress;
+			private String team;
+			
+			public void setEmailAddress(String emailAddress) ...
+			public void setTeam(String team) ...
+			
+			- defined in the spring config as such
+				- <property name="emailAddress" value="randomemailaddress@random.com" />
+				- <property name="team" value="some team name" />
+				
+- INJECTING VALUES FROM PROPERTIES FILE
+	- create properties file
+		- props file with simple key value pairs (whatever=whatever)
+	- load properties file in spring config file
+		- <context:property-placeholder location="classpath:sport.properties" />
+	- reference values from props file
+		- reference the keys like you would in javascript template literals "value=${property.key}"

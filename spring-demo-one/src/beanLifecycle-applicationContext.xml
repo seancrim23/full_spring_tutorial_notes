@@ -7,9 +7,6 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!-- Load the properties file -->
-	<context:property-placeholder location="classpath:sport.properties" />
-
 	<!-- Define dependencies -->
     <bean id="myFortune"
     	class="com.luv2code.springdemo.services.RandomFortuneService">
@@ -17,16 +14,13 @@
     
         <!-- Define your beans here -->
     <bean id="myCoach"
-    	class="com.luv2code.springdemo.coaches.TrackCoach">
+    	class="com.luv2code.springdemo.coaches.TrackCoach"
+    	init-method="doMyStartupStuff"
+    	destroy-method="doMyCleanupStuff">
+    	
     	<constructor-arg ref="myFortune" />
     </bean>
-    
-    <bean id="myCricketCoach"
-    	class="com.luv2code.springdemo.coaches.CricketCoach">
-    	<property name="fortuneService" ref="myFortune" />	
-    	<property name="emailAddress" value="${foo.email}" />
-    	<property name="team" value="${foo.team}" />
-    </bean>
+   
     
 </beans>
 
