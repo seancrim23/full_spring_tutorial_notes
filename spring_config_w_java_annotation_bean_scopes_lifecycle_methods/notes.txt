@@ -1,0 +1,17 @@
+*********************************************************************************************
+spring - java annotation bean scopes and lifestyle methods
+**********************************************************************************************
+
+- can explicitly specify bean scope
+	- @Component
+	  @Scope("singleton") //etc etc
+	  
+- same behavior as in xml config
+
+	- beans created through singleton share the same object
+	- prototype created beans create a brand new object each time
+	
+- adding lifestyle methods
+	- define init and destroy methods
+	- add annotations: @PostConstruct and @PreDestroy
+	

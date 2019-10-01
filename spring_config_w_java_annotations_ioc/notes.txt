@@ -17,7 +17,7 @@ what are java annotations?
 		- same bean retrieval as before
 			- Coach theCoach = context.getBean("thatOneCoach", Coach.class);
 			
-- Default bean IDs
+- Default bean IDs (seems to be a more straightforward way of going about it)
 	- the class name, make first letter lowercase
 		- ex: classname: TennisCoach -> default bean id: tennisCoach
 			@Component

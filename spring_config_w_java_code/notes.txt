@@ -1,0 +1,50 @@
+****************************************************************
+spring - spring config w java code
+*****************************************************************************
+
+- using java source code to configure the container!!!! woohhooo
+
+- Java spring config dev process
+	- create java class and annotate as @configuration
+		- @Configuration
+		public class SportConfig {
+		}
+	- add component scanning support: @ComponentScan (optional)
+		- add @ComponentScan("com.luv2code.springdemo") -> OPTIONAL
+	- read spring java config class
+		- AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SportConfig.class) //very similar to reading from the file
+	- retrieve bean from spring container
+		- same as always
+			- Coach theCoach = context.getBean("tennisCoach", Coach.class)
+			
+- Define beans in Spring
+	- essentially setting up a java class that has no annotations, handling it at the config level rather than the class level
+	- dev process:
+		- define method to expose bean
+			- removes component scan (i assume that can improve performance if an app is very big?)
+				@Configuration
+				public class config{
+					@Bean
+					public Coach swimCoach(){
+						SwimCoach mySwimCoach = new SwimCoach();
+						return mySwimCoach;
+					}
+				}
+		- inject bean dependencies
+			- @Bean
+				public FortuneService happyFortuneService(){
+					return new HappyFortuneService();
+				}
+				- pass happyFortuneService() to the new SwimCoach as a constructor argument to inject
+		- read spring java config class
+			- same as before ^^^
+		- retrieve bean from Spring container
+			- same as before ^^^
+			
+- loading properties file through java annotations:
+	- create props file
+	- load props file in spring config
+		- @PropertySource("classpath:sport.properties")
+	- reference values from props file
+		- @Value("${foo.email}")
+			private String email;

@@ -1,0 +1,47 @@
+*********************************************************************
+spring mvc - creating controllers and views
+***********************************************************************
+
+- development process (basic HTML page)
+	- create controller class
+		- annotate class w @Controller
+			- @Controller inherits from @Component
+			- @Controller
+				public class HomeController {
+				}
+	- define controller method
+		- inside of controller
+			- public String showMyPage(){
+			}
+	- add request mapping to controller method
+		- annotation on the controller method
+			- @RequestMapping
+				public String showMyPage(){
+				}
+	- return view name
+		- inside of the controller method
+			- return "main-menu"; //return whatever the view name is that you want to return for that method!!!
+	- develop view page
+		- like any normal HTML page
+			- <html><body>
+				<h2>Spring MVC Demo - Home Page</h2>
+			  </body></html>
+			  
+- development process (Reading HTML Form data)
+	- create controller class
+	- show HTML form
+		- create controller method to show HTML form
+		- create view page for HTML form
+	- process HTML form
+		- create controller method to process HTML form
+		- develop view page for confirmation
+		
+- Can read form data in JSP using ${param.dataName}!!!!
+
+- Processing request data in a controller method
+	- you can pass HttpServletRequest request and Model as parameters to the function
+		- access the parameter using the "getParameter" function
+			- modify the data
+				- add the data to the model
+				
+	- JSP code can access model data that has been added through "addAttribute"

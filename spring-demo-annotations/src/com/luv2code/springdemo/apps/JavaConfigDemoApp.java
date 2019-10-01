@@ -1,15 +1,16 @@
 package com.luv2code.springdemo.apps;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.luv2code.springdemo.interfaces.Coach;
+import com.luv2code.springdemo.javaspringconfig.SportConfig;
 
-public class AnnotationDemoApp {
+public class JavaConfigDemoApp {
 
 	public static void main(String[] args) {
 		
 		//read spring config file
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SportConfig.class);
 		
 		//get bean from spring container
 		Coach myCoach = context.getBean("tennisCoach", Coach.class);

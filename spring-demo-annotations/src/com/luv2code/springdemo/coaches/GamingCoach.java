@@ -12,4 +12,10 @@ public class GamingCoach implements Coach {
 		return "play halo 2 50 times";
 	}
 
+	@Override
+	public String getDailyFortune() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

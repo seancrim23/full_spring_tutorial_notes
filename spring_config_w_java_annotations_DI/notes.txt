@@ -1,0 +1,51 @@
+***********************************************************************************
+spring - java annotation dependency injection
+***********************************************************************************
+
+- spring autowiring
+	- for Dependency Injection
+	- Spring looks for a class that matches the property
+		- matches by type: class or interface
+	- Spring will auto inject it
+	
+- Three types of autowiring injection!!!
+	- constructor injection
+	- setter injection
+	- field injection
+	
+- Dev process - CONSTRUCTOR injection
+	- define dependency interface and class
+		- straightforward: define an interface (FortuneService for example) and then define a class that implements it with @Component annotation (HappyFortuneService for example)
+	- create constructor in your class for injections
+		- create a constructor that accepts whatever dependency is being injected as an argument
+	- configure the dependency injection with @Autowired annotation
+		- add the @Autowired annotation before the constructor
+		
+- SETTER injection
+	- calling setter methods on the class, very similar to constructor except this uses a setter
+		- need a no argument constructor!!
+		
+	- If you are setting the service with an argument you pass, you can name the function whatever you want, doesn't necessarily have to be "setWhatever"
+	
+- FIELD injection - feel like this is the most straightforward - look into use cases where you would preferably use the others
+	- inject by setting field values on your class directly (with Java Reflection)
+	- simply configure the dependency injection with Autowired Annotation
+		- @Autowired
+			private FortuneService fortuneService; //automatically sets this field behind the scenes
+			
+- which injection to use????
+
+	- choose a style and stay consistent within a project
+	
+- Annotation autowiring and qualifiers
+
+	- need qualifiers if there are multiple implementations of an interface, need to tell Spring which one to pick
+		- @Qualifier("happyFortuneService") //The bean id
+		
+- injecting properties file using java annotations
+	- create properties file with name value pairs
+	- load properties file in XML config file
+		- <context:property-placeholder location="classpath:sport.properties" />
+	- inject properties values into your implementation class
+		- @Value("${property.name}")
+		  private String propertyYouWantToSetWithPropertiesFile

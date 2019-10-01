@@ -2,8 +2,7 @@
 /.recommenders/
 /Servers/
 /spring-and-hibernate-for-beginners-master/
-/solution-code-spring-mvc-config-files/
-
+/lib/
 
 # Created by https://www.gitignore.io/api/java,macos,maven,eclipse,netbeans,intellij,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=java,macos,maven,eclipse,netbeans,intellij,visualstudiocode
