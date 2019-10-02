@@ -1,0 +1,45 @@
+****************************************************************************************
+spring mvc - form tags and data binding
+****************************************************************************************
+
+- Data binding
+	- Spring MVC form tags make use of data binding
+	- automatically setting / retrieving data from Java object / bean
+	
+	- Lots of different Spring MVC Form tags - just look them up sometime
+		- structured like so:
+			<html>
+			
+			... regular html ...
+			... spring MVC form tags ...
+			... more html ...
+			
+			</html>
+			
+- example: setting up HTML form with data binding
+	- <form:form action="processForm" modelAttribute="student">
+		First Name: <form:input path="firstName" />
+		<br><br>
+		Last Name: <form:input path="lastName" />
+		<br><br>
+		<input type="submit" value="Submit" />
+	 </form:form>
+	 
+	- need @ModelAttribute in the controller method to bind the form data to the variable
+		- when the modelAttribute is binded, the form on submit will call the "set" methods on the object, when the form is loaded it will call the "get" methods
+	
+- form tags and data binding dev process:
+	- create Student class
+	- create Student controller class
+	- create HTML Form
+	- create form processing code
+	- create confirmation page
+	
+- Spring MVC tag: select
+	- <form:select>
+	
+- To dynamically populate multiple options - use "form:options"
+	- define a LinkedHashMap and populate it however: hardcode, a file, db
+		- pass that to your <form:options items="${student.countryOptions}" />
+	- can do the same thing to dynamically populate a "form:radiobuttons" element
+		

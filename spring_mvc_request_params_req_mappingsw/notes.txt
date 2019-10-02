@@ -1,0 +1,15 @@
+***********************************************************************************
+spring mvc - req params req mappings
+**********************************************************************************
+
+- @RequestParam 
+	- annotation that allows you to read incoming form data and automatically bind matching names
+		- ex: @RequestParam("studentName") String theName;
+			- This will automatically bind an incoming form field "studentName" to "theName" variable
+			- pass this in to the controller method!!!
+				- pubic String controllerMethod(@RequestParam("studentName") String theName, Model model){...}
+				
+- adding request mappings to controller
+	- serves as parent mapping for controller
+	- all request mappings on methods in the controller are relative
+	- similar to folder directory structures
